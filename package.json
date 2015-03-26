@@ -1,0 +1,21 @@
+{
+  "name": "domstate",
+  "version": "1.0.0",
+  "description": "An event driven way to manage elements' state via data-attributes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "front-end",
+    "dom",
+    "state-management",
+    "htmlelement",
+    "component"
+  ],
+  "author": "Jared Anderson",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.11"
+  }
+}
