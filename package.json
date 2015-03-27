@@ -17,9 +17,9 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.8.11",
+    "gulp-babel": "^4.0.0",
     "gulp-clean": "^0.3.1",
     "gulp-es6-module-transpiler": "^0.2.1",
-    "gulp-es6-transpiler": "^1.0.1",
     "gulp-flatten": "0.0.4",
     "gulp-jshint": "^1.9.4",
     "gulp-load-plugins": "^0.9.0",
