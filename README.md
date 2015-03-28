@@ -1,3 +1,3 @@
-# domstate
+# Element State Toggle
 
-An event-driven component to manage DOM elements' state
+An event-driven low-level component to manage DOM elements' state
