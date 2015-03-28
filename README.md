@@ -8,7 +8,7 @@ Zero dependencies!
 ## Usage
 
 
-### Commands (to toggle a the state)
+### Commands (to toggle the state)
 
 
 ```
