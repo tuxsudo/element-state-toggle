@@ -6,7 +6,7 @@ Polyfill Required: `CustomEvent` polyfill (IE9+)
 
 
 // See domstate.toggle.defaults for structure of config
-export function init( config ) {
+export default function ( config ) {
 
         // attribute to toggle passed by e.detail (or default value)
     var getattr = e => e.detail || config.attribute,

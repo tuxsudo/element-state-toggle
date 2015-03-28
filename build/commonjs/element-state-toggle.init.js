@@ -7,12 +7,7 @@ Polyfill Required: `CustomEvent` polyfill (IE9+)
 // See domstate.toggle.defaults for structure of config
 "use strict";
 
-exports.init = init;
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-function init(config) {
+module.exports = function (config) {
 
     // attribute to toggle passed by e.detail (or default value)
     var getattr = function (e) {
@@ -47,4 +42,4 @@ function init(config) {
     window.addEventListener(config.commands.on, on);
     window.addEventListener(config.commands.off, off);
     window.addEventListener(config.commands.toggle, toggle);
-}
+};

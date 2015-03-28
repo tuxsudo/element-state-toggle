@@ -2,7 +2,8 @@
 
 (function () {
     "use strict";
-    var $$toggle$defaults$$config = {
+
+    var $$defaults$$default = {
 
         attribute: "data-state-on",
 
@@ -18,7 +19,8 @@
         }
 
     };
-    function $$toggle$$init(config) {
+
+    var $$init$$default = function $$init$$default(config) {
 
         // attribute to toggle passed by e.detail (or default value)
         var getattr = function (e) {
@@ -53,7 +55,7 @@
         window.addEventListener(config.commands.on, on);
         window.addEventListener(config.commands.off, off);
         window.addEventListener(config.commands.toggle, toggle);
-    }
+    };
 
-    $$toggle$$init($$toggle$defaults$$config);
+    $$init$$default($$defaults$$default);
 }).call(undefined);

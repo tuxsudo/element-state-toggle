@@ -9,7 +9,7 @@ gulp.task('es6', ['clean', 'lint'],  function () {
 
     return gulp.src('src/*.js')
     	.pipe($.flatten() )
-		.pipe( $.rename(function(path){ path.basename = 'domstate.' + path.basename; }) )
+		.pipe( $.rename(function(path){ path.basename = 'element-state-toggle.' + path.basename; }) )
         .pipe( gulp.dest('build/es6') )
 });
 
@@ -19,13 +19,13 @@ gulp.task('es6', ['clean', 'lint'],  function () {
 
 gulp.task('es5', ['clean', 'lint'],  function () {
 
-    return gulp.src('src/*.build.js')
+    return gulp.src('src/build.js')
     	.pipe($.es6ModuleTranspiler({
             formatter: 'bundle'
         }))
         .pipe( $.babel() )
     	.pipe($.flatten())
-		.pipe( $.rename(function(path){ path.basename = 'domstate.' + path.basename.replace('.build', ''); }) )
+		.pipe( $.rename(function(path){ path.basename = path.basename.replace('build', 'element-state-toggle'); }) )
         .pipe( gulp.dest('build/es5') )
         .pipe( $.uglify() )
         .pipe( $.rename(function(path){ path.basename+=".min"; }) )
@@ -39,7 +39,7 @@ gulp.task('commonjs', ['clean', 'lint'],  function () {
 
     return gulp.src('src/*.js')
     	.pipe( $.babel() )
-		.pipe( $.rename(function(path){ path.basename = 'domstate.' + path.basename.replace('.build', ''); }) )
+		.pipe( $.rename(function(path){ path.basename = 'element-state-toggle.' + path.basename.replace('.build', ''); }) )
         .pipe( gulp.dest('build/commonjs') );
 
 });

@@ -1,9 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var config = {
+module.exports = {
 
 	attribute: "data-state-on",
 
@@ -19,4 +16,3 @@ var config = {
 	}
 
 };
-exports.config = config;

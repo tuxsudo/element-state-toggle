@@ -1,4 +1,4 @@
-export var config = {
+export default {
 
 	attribute: 'data-state-on',
 
