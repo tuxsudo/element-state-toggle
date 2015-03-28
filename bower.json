@@ -1,12 +1,12 @@
 {
   "name": "element-state-toggle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/TuxSudo/element-state-toggle",
   "authors": [
     "Jared Anderson <jared@tuxsudo.com>"
   ],
   "description": "An event-driven low-level component to toggle DOM elements' state",
-  "main": "build/es5/element-state-toggle.min.js",
+  "main": "build/element-state-toggle.min.js",
   "moduleType": [
     "es6",
     "globals",
