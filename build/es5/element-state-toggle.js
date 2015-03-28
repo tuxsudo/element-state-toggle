@@ -20,7 +20,7 @@
 
     };
 
-    var $$init$$default = function $$init$$default(config) {
+    var $$lib$$default = function $$lib$$default(config) {
 
         // attribute to toggle passed by e.detail (or default value)
         var getattr = function (e) {
@@ -57,5 +57,5 @@
         window.addEventListener(config.commands.toggle, toggle);
     };
 
-    $$init$$default($$defaults$$default);
+    $$lib$$default($$defaults$$default);
 }).call(undefined);
