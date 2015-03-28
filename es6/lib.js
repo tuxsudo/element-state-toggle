@@ -1,9 +1,3 @@
-/*
-
-Polyfill Required: `CustomEvent` polyfill (IE9+)
-
-*/
-
 
 // See defaults.js for structure of config
 export default function ( config ) {
