@@ -1,6 +1,6 @@
 {
   "name": "domstate",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An event driven way to manage elements' state via data-attributes",
   "main": "es5/element-state-toggle.min.js",
   "scripts": {
