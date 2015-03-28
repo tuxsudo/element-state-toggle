@@ -2,7 +2,7 @@
   "name": "domstate",
   "version": "1.0.3",
   "description": "An event driven way to manage elements' state via data-attributes",
-  "main": "build/element-state-toggle.min.js",
+  "main": "es5/element-state-toggle.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
