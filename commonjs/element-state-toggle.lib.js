@@ -28,7 +28,7 @@ module.exports = function (config) {
 	off = function (e) {
 		var attribute = getattr(e);
 		e.target.removeAttribute(attribute);
-		dispatch(e.target, config.notices.on, attribute);
+		dispatch(e.target, config.notices.off, attribute);
 	},
 	   
 

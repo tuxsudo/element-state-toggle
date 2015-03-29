@@ -19,7 +19,7 @@ export default function ( config ) {
 		off = e => {
 			var attribute = getattr(e);
 			e.target.removeAttribute( attribute );
-			dispatch(e.target, config.notices.on, attribute);
+			dispatch(e.target, config.notices.off, attribute);
 		},
 
 		// toggle the attribute
