@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Element State Toggle</title>
+    <script src="../es5/element-state-toggle.min.js"></script>
+    <style>
+        .toggled {
+            display: none;
+        }
+
+        .toggled[data-state-on] {
+            display: block;
+        }
+
+        .toggler {
+            color: blue;
+        }
+
+        .toggler[data-trigger-active] {
+            color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<section>
+    <h1>Element State Toggle Test</h1>
+
+    <ul>
+
+        <li>
+            <a class="toggler" id="toggler1" href="#toggled1">Toggle Next</a>
+
+            <div class="toggled" id="toggled1">Toggled Content</div>
+        </li>
+
+    </ul>
+
+</section>
+
+
+
+
+
+
+<script>
+
+var trigger = function(selector, ev, detail) {
+    return function(e) {
+
+        var me = this, 
+            target = document.querySelector(selector);
+
+        window.addEventListener('state.on', function(e) {
+            if(e.target == target) {
+                me.setAttribute('data-trigger-active', 1);
+            }
+        });
+
+        window.addEventListener('state.off', function(e) {
+            if(e.target == target) {
+                me.removeAttribute('data-trigger-active');
+            }
+        });
+
+        target.dispatchEvent( new CustomEvent(ev, { bubbles: true, detail:detail }) );
+        e.preventDefault();
+    };
+};
+
+
+document.querySelector('#toggler1').addEventListener('click', trigger("#toggled1", "cmd.state.toggle") );
+
+</script>
+</body>
+</html>
+
