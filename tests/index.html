@@ -4,41 +4,30 @@
     <meta charset="utf-8">
     <title>Element State Toggle</title>
     <script src="../es5/element-state-toggle.min.js"></script>
-    <style>
-        .toggled {
-            display: none;
-        }
-
-        .toggled[data-state-on] {
-            display: block;
-        }
-
-        .toggler {
-            color: blue;
-        }
-
-        .toggler[data-trigger-active] {
-            color: red;
-        }
-
-    </style>
 </head>
 
 <body>
 
 
 <section>
+
     <h1>Element State Toggle Test</h1>
 
-    <ul>
+    <section>
 
-        <li>
-            <a class="toggler" id="toggler1" href="#toggled1">Toggle Next</a>
+        <a data-target-watch="#toggled1" class="trigger" id="trigger1">Toggle Next</a>
+        |
+        <a data-target-watch="#toggled1" class="trigger" id="opener1">Open Next</a>
+        |
+        <a data-target-watch="#toggled1" class="trigger" id="closer1">Close Next</a>
+        
+        <div class="toggled" id="toggled1">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut euismod eros. In varius ut ligula a mollis. In facilisis tellus purus, eu ornare libero lacinia nec. Nunc et purus eu ex bibendum tempus. In congue sed est ac hendrerit. Quisque orci ante, viverra id risus viverra, commodo hendrerit sapien. Morbi iaculis hendrerit libero vel lacinia. Quisque vehicula dapibus velit, quis consectetur libero aliquet eleifend. Nulla lacinia iaculis aliquam. Proin nulla nisi, porta auctor orci faucibus, scelerisque efficitur urna. Mauris efficitur pretium mauris, quis tincidunt metus aliquam ac. Etiam blandit turpis ut tincidunt cursus. Nullam rhoncus dolor est, at tincidunt lectus euismod vitae. Donec metus erat, maximus sit amet iaculis vel, pulvinar vel urna. Proin vitae sagittis sem, quis auctor arcu.</p>
 
-            <div class="toggled" id="toggled1">Toggled Content</div>
-        </li>
-
-    </ul>
+            <p>Nulla facilisi. Aenean in ligula mattis, lacinia tellus a, efficitur ligula. Morbi vitae elit gravida, cursus tortor eu, dignissim ligula. Duis quis est et nisl gravida posuere a vitae dolor. Aliquam aliquet quis neque vel dapibus. Sed et scelerisque turpis. Quisque eu eros vel ipsum ornare cursus sed non ligula. Duis leo ipsum, lacinia sed nisl ornare, fringilla elementum velit. Aenean at pulvinar quam, vitae eleifend nisi. In mattis neque nunc, vitae luctus urna venenatis eget. Phasellus pellentesque suscipit velit, faucibus hendrerit nisi semper id. Morbi a imperdiet est. Nunc vestibulum id velit in facilisis. Suspendisse magna mi, semper cursus feugiat at, gravida accumsan libero.</p>
+        </div>
+    
+    </section>
 
 </section>
 
@@ -50,32 +39,82 @@
 <script>
 
 var trigger = function(selector, ev, detail) {
+
     return function(e) {
 
-        var me = this, 
-            target = document.querySelector(selector);
+        var target = document.querySelector(selector);
 
-        window.addEventListener('state.on', function(e) {
-            if(e.target == target) {
-                me.setAttribute('data-trigger-active', 1);
-            }
-        });
-
-        window.addEventListener('state.off', function(e) {
-            if(e.target == target) {
-                me.removeAttribute('data-trigger-active');
-            }
-        });
-
-        target.dispatchEvent( new CustomEvent(ev, { bubbles: true, detail:detail }) );
+        target.dispatchEvent( new CustomEvent(ev, { bubbles: true, detail: detail }) );
         e.preventDefault();
     };
+
 };
 
 
-document.querySelector('#toggler1').addEventListener('click', trigger("#toggled1", "cmd.state.toggle") );
+[].slice.call( document.querySelectorAll('.trigger[data-target-watch]')).forEach( function(trigger) {
+
+    var target = document.querySelector( trigger.getAttribute('data-target-watch') );
+
+    window.addEventListener('state.on', function(e) {
+        if(e.target == target) {
+            trigger.setAttribute('data-trigger-active', 1);
+        }
+    });
+
+    window.addEventListener('state.off', function(e) {
+        if(e.target == target) {
+            trigger.removeAttribute('data-trigger-active');
+        }
+    });
+
+});
+
+
+document.querySelector('#trigger1').addEventListener('click', trigger("#toggled1", "cmd.state.toggle") );
+document.querySelector('#opener1').addEventListener('click', trigger("#toggled1", "cmd.state.on") );
+document.querySelector('#closer1').addEventListener('click', trigger("#toggled1", "cmd.state.off") );
+
 
 </script>
+
+<style>
+
+.toggled {
+    display: none;
+}
+
+.toggled[data-state-on] {
+    display: block;
+}
+
+.trigger {
+    color: blue;
+    cursor: pointer;
+}
+
+.trigger[data-trigger-active] {
+    color: red;
+}
+
+#opener1[data-trigger-active],
+#closer1 {
+    opacity: .25;
+    pointer-events: none;
+}
+
+#closer1[data-trigger-active] {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+#toggled1 {
+    padding: 2em 0;
+}
+
+
+</style>
+
 </body>
 </html>
 
